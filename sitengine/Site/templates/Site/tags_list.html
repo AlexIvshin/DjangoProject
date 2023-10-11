@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Tags list - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <div class="container-content">
+    <p class="title"> Tags: </p>
+    {% for tag in tags|dictsort:'title' %}
+      <a class="link" href="{{ tag.get_absolute_url }}"> #{{ tag.title }}, </a>
+    {% endfor %}
+  </div>
+{% endblock %}

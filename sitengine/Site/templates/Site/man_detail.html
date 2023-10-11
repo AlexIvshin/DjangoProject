@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ man.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <div class="container-content">
+    <p class="description">{{ man.title }}</p>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <p class="code-text"><span>{{ man.body|linebreaksbr|urlize }}</span></p>
+      </li>
+    </ul>
+  </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ script.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <div class="container-content">
+    <p class="title">{{ script.title }}:</p>
+    <p class="description">{{ script.description }}</p>
+    <script src="/static/code-prettify-master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp" defer="defer"></script>
+    <pre class="prettyprint linenums"><code>{{ script.body }}</code></pre>
+  </div>
+{% endblock %}

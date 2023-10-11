@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ tag.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+  <div class="container-content">
+    <p class="title"> Associated with the "<b> {{ tag.title }} </b> " tag: </p>
+
+    {% if tag.scripts.all %}
+      <p class="title2"> Scripts & code: </p>
+      {% for script in tag.scripts.all %}
+        <div class="text-ellipsis">
+          <a href="{{ script.get_absolute_url }}">
+            <svg class="bi bi-caret-right-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+            </svg>
+            {{ script.title }} <span class="description"> --- {{ script.description }} </span>
+          </a>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% if tag.commands.all %}
+      <p class="title2"> Commands: </p>
+      {% for command in tag.commands.all %}
+        <div class="text-ellipsis">
+          <a href="{{ command.get_absolute_url }}">
+            <svg class="bi bi-caret-right-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+            </svg>
+            {{ command.title }}
+          </a>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% if tag.links.all %}
+      <p class="title2 mt-2"> Helpful links: </p>
+      {% for link in tag.links.all %}
+        <div class="text-ellipsis">
+          <a class="link" href="{{ link.title }}">
+            <svg class="bi bi-caret-right-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+            </svg>
+            <span class="description"> {{ link.description }} --- </span>
+            {{ link.title }}
+          </a>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% if tag.mans.all %}
+      <p class="title2 mt-2"> Manuals: </p>
+      {% for man in tag.mans.all %}
+        <div class="text-ellipsis">
+          <a href="{{ man.get_absolute_url }}">
+            <svg class="bi bi-caret-right-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+            </svg>
+            {{ man.title }}
+          </a>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% if tag.archivefiles.all %}
+      <p class="title2 mt-2">Archivefiles:</p>
+      {% for archivefile in tag.archivefiles.all|dictsort:'description' %}
+        <div class="text-ellipsis">
+          <a class="links" href="{{ MEDIA_URL }}{{ archivefile.archivefile }}" download>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-zip-fill" viewBox="0 0 16 16">
+              <path d="M5.5 9.438V8.5h1v.938a1 1 0 0 0 .03.243l.4 1.598-.93.62-.93-.62.4-1.598a1 1 0 0 0 .03-.243z"/>
+              <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-4-.5V2h-1V1H6v1h1v1H6v1h1v1H6v1h1v1H5.5V6h-1V5h1V4h-1V3h1zm0 4.5h1a1 1 0 0 1 1 1v.938l.4 1.599a1 1 0 0 1-.416 1.074l-.93.62a1 1 0 0 1-1.109 0l-.93-.62a1 1 0 0 1-.415-1.074l.4-1.599V8.5a1 1 0 0 1 1-1z"/>
+            </svg>
+            {{ archivefile.archivefile }} <span class="description"> --- {{ archivefile.description }} </span>
+          </a>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+  </div>
+{% endblock %}

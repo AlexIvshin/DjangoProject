@@ -1,0 +1,3 @@
+/venv/*
+/sitengine/sitengine/settings.py
+/sitengine/db.sqlite3
